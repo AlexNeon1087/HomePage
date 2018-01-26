@@ -10,3 +10,13 @@
    background-color: antiquewhite;
  }
 </style>
+
+
+<script>
+import '../../assets/lib/jQuery/jquery.min.js'
+import '../../assets/lib/fullpage/jquery.fullpage.min.js'
+export default {
+  
+}
+
+</script>

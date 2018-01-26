@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+      
     },
     goHomePage() {
       this.$router.push("home");
