@@ -70,13 +70,13 @@ module.exports = {
    'vue-router':'VueRouter' ,
     // 'element-ui':'element-ui'
   },
-  plugins: [ 
-        new webpack.ProvidePlugin({ 
-              $:"jquery", 
-              jQuery:"jquery", 
-             "windows.jQuery":"jquery"
-     }) 
-    ],
+  // plugins: [ 
+  //       new webpack.ProvidePlugin({ 
+  //             $:"jquery", 
+  //             jQuery:"jquery", 
+  //            "windows.jQuery":"jquery"
+  //    }) 
+  //   ],
 }
 
 if (process.env.NODE_ENV === 'production') {

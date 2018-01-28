@@ -19,19 +19,28 @@
 
 <style lang="less" scoped>
 
+
 </style>
 
 <script>
-
   import '../../assets/lib/fullpage/jquery.fullpage.min.js'
   export default {
-    created() {
+    mounted() {
       this.fullpage()
+    },
+    beforeDestroy(){
+      $.fn.fullpage.destroy('all')
     },
     methods: {
       fullpage() {
-        $('#fullpage').fullpage();
-      }
+          $('#fullpage').fullpage({
+            sectionsColor: ["#f9dd67", "#84a2d4", "#ef674d", "#ffeedd", "#cf4759", "#85d9ed", "#8ac060",
+              "#84d9ed"
+            ],
+            navigation: true,
+          });
+      },
+
     }
   }
 
