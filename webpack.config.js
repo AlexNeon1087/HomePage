@@ -63,13 +63,20 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map',
-//   plugins: [ 
-//         new webpack.ProvidePlugin({ 
-//               $:"jquery", 
-//               jQuery:"jquery", 
-//              "windows.jQuery":"jquery"
-//      }) 
-//     ],
+  externals: {
+    'jquery': 'jQuery',
+   'vue':'Vue',
+    'i18n':'vue-i18n',
+   'vue-router':'VueRouter' ,
+    // 'element-ui':'element-ui'
+  },
+  plugins: [ 
+        new webpack.ProvidePlugin({ 
+              $:"jquery", 
+              jQuery:"jquery", 
+             "windows.jQuery":"jquery"
+     }) 
+    ],
 }
 
 if (process.env.NODE_ENV === 'production') {
