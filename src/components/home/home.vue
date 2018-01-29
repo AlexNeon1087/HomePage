@@ -2,7 +2,7 @@
   <div>
     <div id="fullpage">
       <div class="section">
-        <h3>第一屏</h3>
+        <h3>{{ $t("message.header.home") }}</h3>
       </div>
       <div class="section">
         <h3>第二屏</h3>
@@ -34,10 +34,10 @@
     methods: {
       fullpage() {
           $('#fullpage').fullpage({
-            sectionsColor: ["#f9dd67", "#84a2d4", "#ef674d", "#ffeedd", "#cf4759", "#85d9ed", "#8ac060",
-              "#84d9ed"
-            ],
-            navigation: true,
+            // sectionsColor: ["#f9dd67", "#84a2d4", "#ef674d", "#ffeedd", "#cf4759", "#85d9ed", "#8ac060",
+            //   "#84d9ed"
+            // ],
+            // navigation: true,
           });
       },
 
