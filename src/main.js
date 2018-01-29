@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import {Menu} from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
 import i18n from './vue-i18n/i18n'
 // import $ from 'jquery'
 import './assets/lib/fullpage/jquery.fullpage.min.css'

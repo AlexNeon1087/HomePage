@@ -2,25 +2,32 @@
   <div id="app" class="w">
     <div id="header">
       <div id="logo">
-
+        <img src="./assets/images/logo.png" alt="">
+        <span id="kkl">QuarkChain</span>
       </div>
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1" @click="goHomePage">{{ $t("message.header.home") }}</el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">{{ $t("message.header.service") }}</template>
-          <el-menu-item index="2-1" @click="goTechServer">区块链技术服务</el-menu-item>
-          <el-menu-item index="2-2" @click="goTradeCion">数字交易所开发</el-menu-item>
-          <el-menu-item index="2-3" @click="goTechTraining">区块链技术培训</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="3" @click="aboutUs">
+      <ul id="title">
+        <li @click="goHomePage">{{ $t("message.header.home") }}</li>
+        <li class="service">
+          {{ $t("message.header.service") }}
+          <ul class="service-menu" style="display:none">
+            <li @click="goTechServer">区块链技术服务</li>
+            <li @click="goTradeCion">数字交易所开发</li>
+            <li @click="goTechTraining">区块链技术培训</li>
+          </ul>
+          <i></i>
+        </li>
+        <li @click="aboutUs">
           {{ $t("message.header.aboutUs") }}
-        </el-menu-item>
-        <el-submenu index="4">
-          <template slot="title">{{lang}}</template>
-          <el-menu-item index="4-1" @click="chooseEn">english</el-menu-item>
-          <el-menu-item index="4-2" @click="chooseZh">中文</el-menu-item>
-        </el-submenu>
-      </el-menu>
+        </li>
+        <li class="language">
+          {{lang}}
+          <ul class="language-menu" style="display:none">
+              <li @click="chooseEn">english</li>
+              <li @click="chooseZh">中文</li>
+          </ul>
+          <i></i>
+        </li>
+      </ul>
     </div>
     <router-view></router-view>
     <div id="footer">
@@ -69,24 +76,69 @@ export default {
 </script>
 
  <style lang="less" scoped>
-.w {
-  margin: 0 auto;
-  width: 1300px;
-}
+ #app{
+   position: relative;
+ }
+// .w {
+//   margin: 0 auto;
+//   width: 1600px;
+// }
 #header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 76px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid grey;
+  align-items: center;
+  z-index: 999;
 }
-
-.el-submenu .el-menu-item {
-  min-width: 80px;
-}
-
 #logo {
-  width: 100px;
-  height: 60px;
-  background-color: aquamarine;
+  margin-left: 40px;
+  cursor: pointer;
+  #kkl {
+    margin-left: 16px;
+    color: #2A61AD;
+    font-size: 10px;
+    font-family: HiraginoSansGBW3;
+  }
+}
+#title{
+  display: flex;
+  .service{
+    i{
+      float: right;
+      margin-left: 10px;
+      display: inline-block;
+      background: url('assets/images/sspirit.png')  152px 902px;
+      width: 20px;
+      height: 20px;
+     }
+  }
+  .language{
+      i{
+      float: right;
+      display: inline-block;
+      background: url('assets/images/sspirit.png')  152px 902px;
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+     }
+  }
+ li{
+   margin-right: 50px;
+    color: #2A61AD;
+    font-size: 10px;
+    font-family: HiraginoSansGBW3;
+    cursor: pointer;
+   .service-menu{
+
+   }
+   .language-menu{
+
+   }
+ }
 }
 #footer {
   height: 100px;
