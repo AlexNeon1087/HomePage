@@ -9,23 +9,23 @@
         <li @click="goHomePage">{{ $t("message.header.home") }}</li>
         <li class="service">
           {{ $t("message.header.service") }}
-          <ul class="service-menu" style="display:none">
+          <ul class="service-menu" v-show="isshowservice">
             <li @click="goTechServer">区块链技术服务</li>
             <li @click="goTradeCion">数字交易所开发</li>
             <li @click="goTechTraining">区块链技术培训</li>
           </ul>
-          <i></i>
+          <i @click="ShoService"></i>
         </li>
         <li @click="aboutUs">
           {{ $t("message.header.aboutUs") }}
         </li>
         <li class="language">
           {{lang}}
-          <ul class="language-menu" style="display:none">
-              <li @click="chooseEn">english</li>
-              <li @click="chooseZh">中文</li>
+          <ul class="language-menu" v-show="isshowlanguage">
+            <li @click="chooseEn">english</li>
+            <li @click="chooseZh">中文</li>
           </ul>
-          <i></i>
+          <i @click="ShowLanguage"></i>
         </li>
       </ul>
     </div>
@@ -37,28 +37,42 @@
 </template>
 
 <script>
-import { NavMenu } from "element-ui";
-
+// import { NavMenu } from "element-ui";
 export default {
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1",
-      lang: "English"
+      lang: "English",
+      isshowservice: false,
+      isshowlanguage: false
     };
   },
   methods: {
+    ShowLanguage() {
+         $(".language i").css({
+        transform: "rotateX(180deg)"
+      });
+      this.isshowlanguage = !this.isshowlanguage;
+    },
+    ShoService() {
+      $(".service i").css({
+        transform: "rotateX(180deg)"
+      });
+      this.isshowservice = !this.isshowservice;
+    },
     goHomePage() {
       this.$router.push("home");
     },
     goTechServer() {
       this.$router.push("techServer");
+      this.isshowservice = !this.isshowservice;
     },
     goTradeCion() {
       this.$router.push("tradeCion");
+      this.isshowservice = !this.isshowservice;
     },
     goTechTraining() {
       this.$router.push("techTraining");
+      this.isshowservice = !this.isshowservice;
     },
     aboutUs() {
       this.$router.push("aboutUs");
@@ -66,19 +80,21 @@ export default {
     chooseEn() {
       this.$i18n.locale = "us";
       this.lang = "English";
+      this.isshowlanguage = !this.isshowlanguage;
     },
     chooseZh() {
       this.$i18n.locale = "zh";
       this.lang = "中文";
+      this.isshowlanguage = !this.isshowlanguage;
     }
   }
 };
 </script>
 
  <style lang="less" scoped>
- #app{
-   position: relative;
- }
+#app {
+  position: relative;
+}
 // .w {
 //   margin: 0 auto;
 //   width: 1600px;
@@ -99,46 +115,58 @@ export default {
   cursor: pointer;
   #kkl {
     margin-left: 16px;
-    color: #2A61AD;
+    color: #2a61ad;
     font-size: 10px;
     font-family: HiraginoSansGBW3;
   }
 }
-#title{
+#title {
   display: flex;
-  .service{
-    i{
+  .service {
+    position: relative;
+    .service-menu {
+      position: absolute;
+      top: 22px;
+      right: -75px;
+    }
+    i {
       float: right;
       margin-left: 10px;
       display: inline-block;
-      background: url('assets/images/sspirit.png')  152px 902px;
+      background: url("assets/images/sspirit.png") 152px 902px;
       width: 20px;
       height: 20px;
-     }
+      transition: all 0.5s;
+    }
   }
-  .language{
-      i{
+  .language {
+    position: relative;
+    .language-menu {
+      position: absolute;
+      top: 22px;
+      right: -50px;
+    }
+    i {
       float: right;
       display: inline-block;
-      background: url('assets/images/sspirit.png')  152px 902px;
+      background: url("assets/images/sspirit.png") 152px 902px;
       width: 20px;
       height: 20px;
       margin-left: 10px;
-     }
+      transition: all 0.5s;
+    }
   }
- li{
-   margin-right: 50px;
-    color: #2A61AD;
+  li {
+    margin-right: 50px;
+    color: #2a61ad;
     font-size: 10px;
     font-family: HiraginoSansGBW3;
     cursor: pointer;
-   .service-menu{
-
-   }
-   .language-menu{
-
-   }
- }
+    .service-menu {
+    }
+    .language-menu {
+    }
+  }
 }
 #footer {
   height: 100px;
