@@ -5,27 +5,25 @@
         <img src="./assets/images/logo.png" alt="">
         <span id="kkl">QuarkChain</span>
       </div>
-      <ul id="title">
+      <ul id="title"  :class="animate" @mouseover="addAnimate" @mouseout="removeAnimate">
         <li @click="goHomePage">{{ $t("message.header.home") }}</li>
         <li class="service">
           {{ $t("message.header.service") }}
-          <ul class="service-menu" v-show="isshowservice">
-            <li @click="goTechServer">区块链技术服务</li>
-            <li @click="goTradeCion">数字交易所开发</li>
-            <li @click="goTechTraining">区块链技术培训</li>
+          <ul class="service-menu">
+            <li @click="goTechServer">Professional service</li>
+            <li @click="goTradeCion">Digital Exchange Development</li>
+            <li @click="goTechTraining">Block chain Technical Training</li>
           </ul>
-          <i @click="ShoService"></i>
         </li>
         <li @click="aboutUs">
           {{ $t("message.header.aboutUs") }}
         </li>
         <li class="language">
           {{lang}}
-          <ul class="language-menu" v-show="isshowlanguage">
+          <ul class="language-menu">
             <li @click="chooseEn">english</li>
-            <li @click="chooseZh">中文</li>
+            <li @click="chooseZh">Zh</li>
           </ul>
-          <i @click="ShowLanguage"></i>
         </li>
       </ul>
     </div>
@@ -37,28 +35,14 @@
 </template>
 
 <script>
-// import { NavMenu } from "element-ui";
 export default {
   data() {
     return {
       lang: "English",
-      isshowservice: false,
-      isshowlanguage: false
+      animate:""
     };
   },
   methods: {
-    ShowLanguage() {
-         $(".language i").css({
-        transform: "rotateX(180deg)"
-      });
-      this.isshowlanguage = !this.isshowlanguage;
-    },
-    ShoService() {
-      $(".service i").css({
-        transform: "rotateX(180deg)"
-      });
-      this.isshowservice = !this.isshowservice;
-    },
     goHomePage() {
       this.$router.push("home");
     },
@@ -84,8 +68,14 @@ export default {
     },
     chooseZh() {
       this.$i18n.locale = "zh";
-      this.lang = "中文";
+      this.lang = "Zh";
       this.isshowlanguage = !this.isshowlanguage;
+    },
+    addAnimate(){
+      this.animate="animated bounce";
+    },
+    removeAnimate(){
+      this.animate =""
     }
   }
 };
@@ -95,10 +85,6 @@ export default {
 #app {
   position: relative;
 }
-// .w {
-//   margin: 0 auto;
-//   width: 1600px;
-// }
 #header {
   position: absolute;
   top: 0px;
@@ -122,49 +108,53 @@ export default {
 }
 #title {
   display: flex;
-  .service {
-    position: relative;
-    .service-menu {
-      position: absolute;
-      top: 22px;
-      right: -75px;
-    }
-    i {
-      float: right;
-      margin-left: 10px;
-      display: inline-block;
-      background: url("assets/images/sspirit.png") 152px 902px;
-      width: 20px;
-      height: 20px;
-      transition: all 0.5s;
-    }
-  }
-  .language {
-    position: relative;
-    .language-menu {
-      position: absolute;
-      top: 22px;
-      right: -50px;
-    }
-    i {
-      float: right;
-      display: inline-block;
-      background: url("assets/images/sspirit.png") 152px 902px;
-      width: 20px;
-      height: 20px;
-      margin-left: 10px;
-      transition: all 0.5s;
-    }
+  &:hover{
+
   }
   li {
+    height: 50px;
+    line-height: 50px;
     margin-right: 50px;
     color: #2a61ad;
     font-size: 10px;
     font-family: HiraginoSansGBW3;
     cursor: pointer;
-    .service-menu {
+    &.service {
+      position: relative;
+      &:hover {
+        .service-menu {
+          display: block;
+        }
+      }
+      .service-menu {
+        width: 250px;
+        display: none;
+        position: absolute;
+        top: 36px;
+        right: -137px;
+        li {
+          height: 16px;
+          line-height: 16px;
+        }
+      }
     }
-    .language-menu {
+    &.language {
+      &:hover {
+        .language-menu {
+          display: block;
+        }
+      }
+      position: relative;
+      .language-menu {
+        display: none;
+        position: absolute;
+        top: 36px;
+        right: -50px;
+        li {
+          height: 16px;
+          line-height: 16px;
+        }
+      }
     }
   }
 }

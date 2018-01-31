@@ -1,27 +1,6 @@
-<template>
-  <div>
-    <p>scacacvfevrevfte</p>
-    <div id="canvas-header" class="large-header">
-      <canvas id="canvas" width="600px" height="600px"></canvas>
-    </div>
-  </div>
-</template>
-
-<style lang="less" scoped>
-p {
-  height: 2000px;
-  // background-color: rgb(165, 204, 162);
-}
-</style>
-
-<script>
-import "../../assets/js/TweenLite.min.js";
-import "../../assets/js/EasePack.min.js";
-// import "../../assets/js/demo-1";
-export default {};
 (function() {
 
-    var width, height, canvas, ctx, points, target, animateHeader = true;
+    var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
 
     // Main
     initHeader();
@@ -32,6 +11,9 @@ export default {};
         width = window.innerWidth;
         height = window.innerHeight;
         target = {x: width/2, y: height/2};
+
+        largeHeader = document.getElementById('canvas-header');
+        largeHeader.style.height = height+'px';
 
         canvas = document.getElementById('canvas');
         canvas.width = width;
@@ -117,6 +99,7 @@ export default {};
     function resize() {
         width = window.innerWidth;
         height = window.innerHeight;
+        largeHeader.style.height = height+'px';
         canvas.width = width;
         canvas.height = height;
     }
@@ -200,5 +183,3 @@ export default {};
     }
     
 })();
-</script>
-

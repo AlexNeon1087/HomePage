@@ -2,12 +2,9 @@
   <div class="homeContent">
     <div id="fullpage">
       <div class="section Fi">
-        <div class="link-line">
-          <span>01</span>
-          <p></p>
-        </div>
         <div class="container">
-          <div class="quark-img">
+    
+          <div class="quark-img ">
             <img src="../../assets/images/quark.png" alt="">
           </div>
           <div class="chain-img">
@@ -25,12 +22,8 @@
         </div>
       </div>
       <div class="section Sc">
-        <div class="link-line">
-          <span>02</span>
-          <p></p>
-        </div>
-        <div class="container">
-          <div class="quark-img">
+        <div class="container" @mousemove="moveBall">
+          <div class="block-img">
             <img src="../../assets/images/Blockchain.png" alt="">
           </div>
           <div class="tech-img">
@@ -67,10 +60,6 @@
         </div>
       </div>
       <div class="section Th">
-        <div class="link-line">
-          <span>03</span>
-          <p></p>
-        </div>
         <div class="container">
           <div class="left-content">
             <div class="left-icon">
@@ -97,10 +86,6 @@
         </div>
       </div>
       <div class="section Fo">
-        <div class="link-line">
-          <span>04</span>
-          <p></p>
-        </div>
         <div class="container">
           <div class="topic-icon">
             <img src="../../assets/images/lockchain.png" alt="">
@@ -124,10 +109,6 @@
         </div>
       </div>
       <div class="section Fiv">
-        <div class="link-line">
-          <span>05</span>
-          <p></p>
-        </div>
         <div class="container">
           <div class="title">
             <img src="../../assets/images/information.png" alt="">
@@ -145,7 +126,7 @@
               <img src="../../assets/images/line-up.png" alt="">
               <p class="time">2017.6.12</p>
               <p class="coin-content">
-                The revolution of the block chain has come. This is a great technological revolution. The traditio
+                The revolution of the block chain has come. This is a great technological revolution.
               </p>
               <img src="../../assets/images/coins.png" alt="">
             </div>
@@ -153,10 +134,6 @@
         </div>
       </div>
       <div class="section Se">
-        <div class="link-line">
-          <span>06</span>
-          <p></p>
-        </div>
         <div class="container">
           <div class="contact">
             <img src="../../assets/images/Contact.png" alt="">
@@ -170,11 +147,38 @@
         </div>
       </div>
     </div>
-
+    <ul id="myMenu">
+      <li class="active">
+        <span>01</span>
+        <p></p>
+      </li>
+      <li>
+        <span>02</span>
+        <p></p>
+      </li>
+      <li>
+        <span>03</span>
+        <p></p>
+      </li>
+      <li>
+        <span>04</span>
+        <p></p>
+      </li>
+      <li>
+        <span>05</span>
+        <p></p>
+      </li>
+      <li>
+        <span>06</span>
+        <p></p>
+      </li>
+    </ul>
     <div id="link-number">
-      <span class="right-arrow"></span>
-      <span class="middle-number"></span>
-      <span class="left-arrow"></span>
+      <span class="right-arrow" @click="prePage"></span>
+      <span class="middle-number">
+        <img src="../../assets/images/liubianxing.png" alt="">
+      </span>
+      <span class="left-arrow" @click="nextPage"></span>
     </div>
   </div>
 </template>
@@ -187,49 +191,25 @@
   position: relative;
   background: url("../../assets/images/beijing.png") no-repeat;
 }
-.link-line {
-  z-index: 999;
-  position: absolute;
-  top: 350px;
-  right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  span {
-    font-family: HiraginoSansGBW3;
-    margin-right: 10px;
-    line-height: 35px;
-    font-size: 8px;
-    opacity: 0.5;
-    color: #ffffff;
-  }
-  p {
-    height: 66px;
-    width: 3px;
-    background-color: #2c61ad;
-  }
-}
+
 #fullpage {
   background-color: black;
   height: 100%;
-  .fp-tableCell {
-    height: 100%;
-  }
   .Fi {
     position: relative;
     .quark-img {
       position: absolute;
-      top: 164px;
+      bottom: 237px;
       left: 500px;
     }
     .chain-img {
       position: absolute;
-      top: 372px;
+      bottom: 41px;
       left: 658px;
     }
     .manage-range {
       position: absolute;
-      top: 709px;
+      bottom: 10px;
       left: 890px;
       ul {
         li {
@@ -238,19 +218,26 @@
           font-size: 8px;
           opacity: 0.5;
           color: #ffffff;
+          &:hover {
+            font-size: 13px;
+            opacity: 0.8;
+          }
         }
       }
       .button {
+        &:hover {
+          background: url("../../assets/images/sspirit.png") 930px 923px;
+        }
         margin-top: 42px;
         width: 70px;
         height: 70px;
-        background: url("../../assets/images/sspirit.png") 1000px 918px;
+        background: url("../../assets/images/sspirit.png") 1000px 923px;
       }
     }
   }
   .Sc {
     position: relative;
-    .quark-img {
+    .block-img {
       position: absolute;
       top: 126px;
       left: 344px;
@@ -344,6 +331,9 @@
         text-align: center;
         word-wrap: break-word;
         line-height: 12px;
+        &:hover {
+          color: rgba(255, 255, 255, 0.5);
+        }
       }
     }
     .discription {
@@ -358,31 +348,38 @@
         opacity: 0.5;
         font-size: 10px;
         font-family: HiraginoSansGBW3;
+        &:hover {
+          opacity: 0.8;
+        }
       }
       .button-arrow {
         margin-top: 42px;
         width: 70px;
         height: 70px;
-        background: url("../../assets/images/sspirit.png") 1000px 918px;
+        background: url("../../assets/images/sspirit.png") 1000px 923px;
+        &:hover {
+          background: url("../../assets/images/sspirit.png") 930px 923px;
+        }
       }
     }
-    .link-line{
-      top:435px;
+    .link-line {
+      top: 435px;
     }
   }
   .Th {
-    .link-line{
-      top:522px;
+    .link-line {
+      top: 522px;
     }
     .container {
       display: flex;
       .left-content {
         width: 40%;
         .left-icon {
-          margin-top: 235px;
+          margin-top: 200px;
           float: right;
           img {
             &:first-of-type {
+              vertical-align: none;
             }
             &:last-of-type {
               margin-left: 40px;
@@ -406,6 +403,11 @@
               font-size: 8px;
               opacity: 0.7;
               &:first-of-type {
+                font-size: 13px;
+              }
+              &:hover {
+                font-size: 13px;
+                opacity: 1;
               }
             }
           }
@@ -418,12 +420,18 @@
               opacity: 0.5;
               font-size: 10px;
               font-family: HiraginoSansGBW3;
+              &:hover {
+                opacity: 0.8;
+              }
             }
             .button-arrow {
               margin-top: 42px;
               width: 70px;
               height: 70px;
-              background: url("../../assets/images/sspirit.png") 1000px 918px;
+              background: url("../../assets/images/sspirit.png") 1000px 923px;
+              &:hover {
+                background: url("../../assets/images/sspirit.png") 930px 923px;
+              }
             }
           }
         }
@@ -431,8 +439,8 @@
     }
   }
   .Fo {
-     .link-line{
-      top:608px;
+    .link-line {
+      top: 608px;
     }
     .topic-icon {
       position: absolute;
@@ -453,6 +461,9 @@
       img {
         width: 546px;
         height: 400px;
+        &:hover {
+          transform: scale(1.05);
+        }
       }
       .discription {
         margin-top: 270px;
@@ -466,8 +477,12 @@
             color: #ffffff;
             line-height: 24px;
             font-size: 10px;
-            // transform: scale(0.5);
+            opacity: 0.5;
             font-family: HiraginoSansGBW3;
+            &:hover {
+              font-size: 13px;
+              opacity: 1;
+            }
           }
         }
         p {
@@ -479,19 +494,25 @@
           opacity: 0.5;
           font-size: 10px;
           font-family: HiraginoSansGBW3;
+          &:hover {
+            opacity: 1;
+          }
         }
         .button-arrow {
           margin-top: 42px;
           width: 70px;
           height: 70px;
-          background: url("../../assets/images/sspirit.png") 1000px 918px;
+          background: url("../../assets/images/sspirit.png") 1000px 923px;
+          &:hover {
+            background: url("../../assets/images/sspirit.png") 930px 923px;
+          }
         }
       }
     }
   }
   .Fiv {
-     .link-line{
-      top:608px;
+    .link-line {
+      top: 608px;
     }
     .title {
       position: absolute;
@@ -564,8 +585,8 @@
     }
   }
   .Se {
-     .link-line{
-      top:694px;
+    .link-line {
+      top: 694px;
     }
     .contact {
       position: absolute;
@@ -598,10 +619,41 @@
     }
   }
 }
+#myMenu {
+  position: fixed;
+  z-index: 999;
+  top: 250px;
+  right: 20px;
+  height: 600px;
+  width: 30px;
+  li {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.2;
+    &.active {
+      opacity: 1;
+    }
+    span {
+      font-family: HiraginoSansGBW3;
+      margin-right: 10px;
+      line-height: 35px;
+      font-size: 8px;
+      opacity: 0.5;
+      color: #ffffff;
+    }
+    p {
+      display: inline-block;
+      height: 66px;
+      width: 3px;
+      background-color: #2c61ad;
+    }
+  }
+}
 
 #link-number {
   position: fixed;
-
   top: 50%;
   left: 5%;
   height: 80px;
@@ -613,23 +665,46 @@
   .right-arrow {
     width: 20px;
     height: 20px;
-    background: url("../../assets/images/sspirit.png") 100px 902px;
+    background: url("../../assets/images/sspirit.png") 97px 907px;
+    cursor: pointer;
   }
   .middle-number {
+    text-align: center;
     width: 100px;
     height: 100px;
-    background: url("../../assets/images/sspirit.png") 296px 940px;
+    background: url("../../assets/images/sspirit.png") 830px 944px;
+    img {
+      animation: LBX 5s infinite linear;
+    }
   }
   .left-arrow {
+    cursor: pointer;
     width: 20px;
     height: 20px;
-    background: url("../../assets/images/sspirit.png") 60px 902px;
+    background: url("../../assets/images/sspirit.png") 60px 907px;
+  }
+}
+@keyframes LBX {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scaleContain {
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
 
 <script>
 import "../../assets/lib/fullpage/jquery.fullpage.min.js";
+
 export default {
   mounted() {
     this.fullpage();
@@ -639,7 +714,49 @@ export default {
   },
   methods: {
     fullpage() {
-      $("#fullpage").fullpage();
+      $("#fullpage").fullpage({
+        afterLoad: function(anchorLink, index) {
+          if (index == 1) {
+            $(".quark-img").addClass("animated slideInDown");
+            $(".chain-img").addClass("animated slideInUp");
+            $(".manage-range").addClass("animated lightSpeedIn");
+          }
+          if (index == 2) {
+            $(".middle-number").css({
+              background: 'url("../../assets/images/sspirit.png") 720px 944px'
+            });
+            $(".tech-img,.block-img").addClass("animated bounceInLeft");
+            $(
+              ".ball-01,.ball-02,.ball-03,.ball-04,.ball-05,.ball-06,.ball-07,.ball-08"
+            ).addClass("animated zoomIn");
+          }
+        },
+        onLeave: function(index, direction) {
+          if (index == 1) {
+            $(".quark-img").removeClass("animated slideInDown");
+            $(".chain-img").removeClass("animated slideInUp");
+            $(".manage-range").removeClass("animated lightSpeedIn");
+          }
+          if (index == 2) {
+            $(".tech-img,.block-img").removeClass("animated bounceInLeft");
+            $(
+              ".ball-01,.ball-02,.ball-03,.ball-04,.ball-05,.ball-06,.ball-07,.ball-08"
+            ).removeClass("animated zoomIn");
+          }
+        }
+      });
+    },
+    moveBall(e) {
+      const moveX =
+        ($(window).width() / 2 - e.clientX) / $(window).width() * 100;
+      const moveY =
+        ($(window).height() / 2 - e.clientY) / $(window).height() * 20;
+    },
+    prePage() {
+      $.fn.fullpage.moveSectionUp();
+    },
+    nextPage() {
+      $.fn.fullpage.moveSectionDown();
     }
   }
 };
